@@ -958,8 +958,9 @@ class Difference(object):
       if err or p.returncode != 0:
         print "WARNING: failure running %s:\n%s\n" % (
             diff_program, "".join(err))
-        self.patch = None
-        return None, None, None
+        # psw0523 fix for nexell ota
+        # self.patch = None
+        # return None, None, None
       diff = ptemp.read()
     finally:
       ptemp.close()
