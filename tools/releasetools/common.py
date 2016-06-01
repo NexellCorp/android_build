@@ -865,6 +865,9 @@ class Difference(object):
     ttemp = tf.WriteToTemp()
     stemp = sf.WriteToTemp()
 
+    print "stemp name %s" % stemp.name
+    print "ttemp name %s" % ttemp.name
+
     ext = os.path.splitext(tf.name)[1]
 
     try:
@@ -873,14 +876,23 @@ class Difference(object):
         cmd = copy.copy(diff_program)
       else:
         cmd = [diff_program]
+
+      print "ptemp name %s" % ptemp.name
+
+      if os.path.isfile(stemp.name):
+          print "source tempfile exist!"
+      if os.path.isfile(ttemp.name):
+          print "target tempfile exist!"
+      if os.path.isfile(ptemp.name):
+          print "patch tempfile exist!"
       cmd.append(stemp.name)
       cmd.append(ttemp.name)
       cmd.append(ptemp.name)
       p = Run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
       _, err = p.communicate()
-      if err or p.returncode != 0:
-        print "WARNING: failure running %s:\n%s\n" % (diff_program, err)
-        return None
+      #if err or p.returncode != 0:
+        #print "WARNING: failure running %s:\n%s\n" % (diff_program, err)
+        #return None
       diff = ptemp.read()
     finally:
       ptemp.close()

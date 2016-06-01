@@ -106,7 +106,8 @@ endif
 # Define them here so they can be used in product config files.
 TARGET_COPY_OUT_SYSTEM := system
 TARGET_COPY_OUT_DATA := data
-TARGET_COPY_OUT_VENDOR := system/vendor
+#TARGET_COPY_OUT_VENDOR := system/vendor
+TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_ROOT := root
 TARGET_COPY_OUT_RECOVERY := recovery
 

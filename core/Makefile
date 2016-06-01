@@ -57,7 +57,6 @@ endif
 # -----------------------------------------------------------------
 # default.prop
 INSTALLED_DEFAULT_PROP_TARGET := $(TARGET_ROOT_OUT)/default.prop
-#INSTALLED_DEFAULT_PROP_TARGET := $(PRODUCT_OUT)/default.prop
 ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_DEFAULT_PROP_TARGET)
 ADDITIONAL_DEFAULT_PROPERTIES := \
     $(call collapse-pairs, $(ADDITIONAL_DEFAULT_PROPERTIES))
@@ -635,11 +634,6 @@ recovery_ramdisk := $(PRODUCT_OUT)/ramdisk-recovery.img
 recovery_build_prop := $(INSTALLED_BUILD_PROP_TARGET)
 recovery_binary := $(call intermediates-dir-for,EXECUTABLES,recovery)/recovery
 recovery_resources_common := $(call include-path-for, recovery)/res
-# psw0523 add for debugging
-recovery_busybox := $(PRODUCT_OUT)/system/bin/busybox
-recovery_wipe_data := $(PRODUCT_OUT)/wipe_data.sh
-recovery_wipe_cache := $(PRODUCT_OUT)/wipe_cache.sh
-
 
 # Select the 18x32 font on high-density devices; and the 12x22 font on
 # other devices.  Note that the font selected here can be overridden
@@ -726,13 +720,6 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTFS) $(MKBOOTIMG) $(MINIGZIP) \
 	$(hide) cp -f $(recovery_initrc) $(TARGET_RECOVERY_ROOT_OUT)/
 	$(hide) -cp $(TARGET_ROOT_OUT)/init.recovery.*.rc $(TARGET_RECOVERY_ROOT_OUT)/
 	$(hide) cp -f $(recovery_binary) $(TARGET_RECOVERY_ROOT_OUT)/sbin/
-# psw0523 add for debugging
-	$(hide) cp -f $(recovery_busybox) $(TARGET_RECOVERY_ROOT_OUT)/sbin/
-	$(hide) cp -f $(recovery_wipe_data) $(TARGET_RECOVERY_ROOT_OUT)/sbin/
-	$(hide) cp -f $(recovery_wipe_cache) $(TARGET_RECOVERY_ROOT_OUT)/sbin/
-	$(hide) cd $(TARGET_RECOVERY_ROOT_OUT)/sbin && ln -s busybox ls && ln -s busybox mount && ln -s busybox umount && ln -s busybox rm && ln -s busybox df && ln -s busybox sync && ln -s busybox sh
-	$(hide) mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/bin
-	$(hide) cd $(TARGET_RECOVERY_ROOT_OUT)/bin && ln -s ../sbin/busybox sh
 	$(hide) cp -rf $(recovery_resources_common) $(TARGET_RECOVERY_ROOT_OUT)/
 	$(hide) cp -f $(recovery_font) $(TARGET_RECOVERY_ROOT_OUT)/res/images/font.png
 	$(hide) $(foreach item,$(recovery_resources_private), \
