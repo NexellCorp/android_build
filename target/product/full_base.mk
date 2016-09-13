@@ -28,7 +28,6 @@ PRODUCT_PACKAGES := \
     WAPPushManager
 
 PRODUCT_PACKAGES += \
-    Galaxy4 \
     HoloSpiralWallpaper \
     LiveWallpapers \
     LiveWallpapersPicker \
@@ -36,7 +35,6 @@ PRODUCT_PACKAGES += \
     NoiseField \
     PhaseBeam \
     VisualizationWallpapers \
-    PhotoTable
 
 # Additional settings used in all AOSP builds
 PRODUCT_PROPERTY_OVERRIDES := \
