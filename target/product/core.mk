@@ -24,6 +24,7 @@ PRODUCT_PACKAGES += \
     CalendarProvider \
     CaptivePortalLogin \
     CertInstaller \
+    DocumentsUI \
     Exchange2 \
     ExternalStorageProvider \
     FusedLocation \
