@@ -39,6 +39,7 @@ PRODUCT_PACKAGES += \
     com.android.mediadrm.signer \
     com.android.mediadrm.signer.xml \
     drmserver \
+    ethernet-service \
     framework-res \
     idmap \
     installd \
@@ -95,6 +96,7 @@ PRODUCT_BOOT_JARS := \
 # The order of PRODUCT_SYSTEM_SERVER_JARS matters.
 PRODUCT_SYSTEM_SERVER_JARS := \
     services \
+    ethernet-service \
     wifi-service
 
 PRODUCT_RUNTIMES := runtime_libart_default

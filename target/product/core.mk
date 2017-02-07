@@ -38,6 +38,7 @@ PRODUCT_PACKAGES += \
     libpac \
     PrintSpooler \
     ProxyHandler \
+    Settings \
     SharedStorageBackup \
     TeleService \
     VpnDialogs \
