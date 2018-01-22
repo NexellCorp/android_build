@@ -1782,6 +1782,10 @@ endif
 ifdef BOARD_KERNEL_PAGESIZE
 	$(hide) echo "$(BOARD_KERNEL_PAGESIZE)" > $(zip_root)/BOOT/pagesize
 endif
+ifneq ($(strip $(TARGET_NO_BOOTLOADER)),true)
+	$(hide) mkdir -p $(zip_root)/IMAGES
+	$(ACP) $(PRODUCT_OUT)/bootloader $(zip_root)/IMAGES/
+endif
 endif # BOARD_USES_RECOVERY_AS_BOOT
 	$(hide) $(foreach t,$(INSTALLED_RADIOIMAGE_TARGET),\
 	            mkdir -p $(zip_root)/RADIO; \
