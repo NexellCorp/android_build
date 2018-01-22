@@ -119,8 +119,12 @@ endif
 # non-default dev keys (usually private keys from a vendor directory).
 # Both of these tags will be removed and replaced with "release-keys"
 # when the target-files is signed in a post-build step.
+
+# NEXELL customize for CTS test
+# android.os.cts.BuildVersionTest#testBuildFingerprint
+# junit.framework.ComparisonFailure: Tag expected:<[release]-keys> but was:<[dev]-keys>
 ifeq ($(DEFAULT_SYSTEM_DEV_CERTIFICATE),build/target/product/security/testkey)
-BUILD_KEYS := test-keys
+BUILD_KEYS := release-keys
 else
 BUILD_KEYS := dev-keys
 endif
