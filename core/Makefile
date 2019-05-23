@@ -2297,6 +2297,9 @@ endif
 
 # -----------------------------------------------------------------
 # host tools needed to build dist and OTA packages
+ifdef TARGET_RECOVERY_FSTAB_EXTRA
+recovery_fstab := $(TARGET_RECOVERY_FSTAB_EXTRA)
+endif
 
 build_ota_package := true
 ifeq ($(TARGET_SKIP_OTA_PACKAGE),true)
