@@ -144,6 +144,8 @@ $(call add_json_list, NamespacesToExport,                $(PRODUCT_SOONG_NAMESPA
 $(call add_json_list, PgoAdditionalProfileDirs,          $(PGO_ADDITIONAL_PROFILE_DIRS))
 
 $(call add_json_bool, En_ffmpegExtractor,               $(filter true,$(EN_FFMPEG_EXTRACTOR)))
+$(call add_json_bool, Quickboot,                         $(filter true,$(NEXELL_QUICKBOOT)))
+$(call add_json_bool, Normalboot,                        $(filter false,$(NEXELL_QUICKBOOT)))
 
 _contents := $(_contents)    "VendorVars": {$(newline)
 $(foreach namespace,$(SOONG_CONFIG_NAMESPACES),\
@@ -158,10 +160,10 @@ _contents := $(subst $(comma)$(newline)__SV_END,$(newline),$(_contents)__SV_END}
 $(file >$(SOONG_VARIABLES).tmp,$(_contents))
 
 $(shell if ! cmp -s $(SOONG_VARIABLES).tmp $(SOONG_VARIABLES); then \
-	  mv $(SOONG_VARIABLES).tmp $(SOONG_VARIABLES); \
-	else \
-	  rm $(SOONG_VARIABLES).tmp; \
-	fi)
+      mv $(SOONG_VARIABLES).tmp $(SOONG_VARIABLES); \
+    else \
+      rm $(SOONG_VARIABLES).tmp; \
+    fi)
 
 _json_list :=
 json_list :=
