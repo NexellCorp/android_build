@@ -660,7 +660,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(event_log_tags_file)
 # Targets for boot/OS images
 # #################################################################
 ifneq ($(strip $(TARGET_NO_BOOTLOADER)),true)
-  INSTALLED_BOOTLOADER_MODULE := $(PRODUCT_OUT)/bootloader
+  INSTALLED_BOOTLOADER_MODULE := $(PRODUCT_OUT)/bootloader.img
   ifeq ($(strip $(TARGET_BOOTLOADER_IS_2ND)),true)
     INSTALLED_2NDBOOTLOADER_TARGET := $(PRODUCT_OUT)/2ndbootloader
   else
