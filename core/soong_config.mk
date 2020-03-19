@@ -143,9 +143,13 @@ $(call add_json_list, NamespacesToExport,                $(PRODUCT_SOONG_NAMESPA
 
 $(call add_json_list, PgoAdditionalProfileDirs,          $(PGO_ADDITIONAL_PROFILE_DIRS))
 
-$(call add_json_bool, En_ffmpegExtractor,               $(filter true,$(EN_FFMPEG_EXTRACTOR)))
+$(call add_json_bool, En_ffmpegExtractor,                $(filter true,$(EN_FFMPEG_EXTRACTOR)))
 $(call add_json_bool, Quickboot,                         $(filter true,$(NEXELL_QUICKBOOT)))
 $(call add_json_bool, Normalboot,                        $(filter false,$(NEXELL_QUICKBOOT)))
+$(call add_json_bool, BatteryNotifierQuickboot,          $(filter true,$(BATTERY_NOTIFIER_QUICKBOOT)))
+$(call add_json_bool, GuiQuickboot,                      $(filter true,$(GUI_QUICKBOOT)))
+$(call add_json_bool, OpenglQuickboot,                   $(filter true,$(OPEN_GL_QUICKBOOT)))
+$(call add_json_bool, SurfaceFlingerQuickboot,           $(filter true,$(SURFACE_FLINGER_QUICKBOOT)))
 
 _contents := $(_contents)    "VendorVars": {$(newline)
 $(foreach namespace,$(SOONG_CONFIG_NAMESPACES),\
