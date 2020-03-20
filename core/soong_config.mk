@@ -150,6 +150,8 @@ $(call add_json_bool, BatteryNotifierQuickboot,          $(filter true,$(BATTERY
 $(call add_json_bool, GuiQuickboot,                      $(filter true,$(GUI_QUICKBOOT)))
 $(call add_json_bool, OpenglQuickboot,                   $(filter true,$(OPEN_GL_QUICKBOOT)))
 $(call add_json_bool, SurfaceFlingerQuickboot,           $(filter true,$(SURFACE_FLINGER_QUICKBOOT)))
+# for CRIU
+$(call add_json_bool, Criu,                              $(filter true,$(NEXELL_CRIU)))
 
 _contents := $(_contents)    "VendorVars": {$(newline)
 $(foreach namespace,$(SOONG_CONFIG_NAMESPACES),\
