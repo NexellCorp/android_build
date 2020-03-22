@@ -186,6 +186,8 @@ function setpaths()
         # strip leading ':', if any
         export PATH=${PATH/:%/}
     fi
+	#Nexell add external toolchain
+	export PATH=PATH=$PATH:$T/vendor/nexell/toolchain/gcc-linaro-4.9-2014.11-x86_64_arm-linux-gnueabihf/bin:$T/vendor/nexell/toolchain/gcc-linaro-4.9-2015.05-x86_64_aarch64-linux-gnu/bin:$T/vendor/nexell/toolchain/arm-eabi-4.8/bin
 
     # and in with the new
     local prebuiltdir=$(getprebuilt)
